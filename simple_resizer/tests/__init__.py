@@ -36,6 +36,8 @@ class ResizeTest(ResizerTestCase):
             os.path.join(cls.assets_folder, "image-1.jpg"),
             os.path.join(cls.assets_folder, "image-2.png"))
 
+        super(ResizeTest, cls).setUpClass()
+
     def setUp(self):
         """
         Setup the test resources
