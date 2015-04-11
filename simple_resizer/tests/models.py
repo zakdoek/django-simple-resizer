@@ -10,7 +10,7 @@ def _get_storage():
     """
     Create a filesystemstorage
     """
-    return FileSystemStorage(location="resizer/tests/assets/",
+    return FileSystemStorage(location="simple_resizer/tests/assets/",
                              base_url="http://www.example.com/my/storage/")
 
 
