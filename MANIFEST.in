@@ -1,6 +1,4 @@
 include README.md
-recursive-include simple_resizer/templatetags *
-recursive-include simple_resizer/tests *
-recursive-include simple_resizer/utils *
+recursive-include simple_resizer *
 include versioneer.py
 include simple_resizer/_version.py
