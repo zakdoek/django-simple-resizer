@@ -33,8 +33,8 @@ class ResizeTemplateTag(ResizerTestCase):
         """
         Setup the test
         """
-        load_tag = "{% load resize from resizer %}"
-        render_url = "{% resize image=image width=500 height=500 %}"
+        load_tag = "{% load resize from simple_resizer %}"
+        render_url = "{% resize image=image width=300 height=300 %}"
         self.template = Template("".join((load_tag, render_url)))
         self.assets_folder = os.path.join(get_test_directory(), "assets")
         self.image_path = os.path.join(self.assets_folder, "image-1.jpg")
@@ -63,7 +63,7 @@ class ResizeTemplateTag(ResizerTestCase):
 
         image = ImageFile(default_storage.open(rendered))
 
-        self.assertResize(image, 500, 500)
+        self.assertResize(image, 300, 300)
         self.assertAspectRatio(image, self.image_1)
         self.assertLessEqual(image.size, self.image_1.size)
 
@@ -87,9 +87,9 @@ class ConditionalResizeTemplateTagTest(ResizerTestCase):
         """
         Setup the test
         """
-        load_tag = "{% load conditional_resize from resizer %}"
-        render_url = ("{% conditional_resize image=image width=500 "
-                      "height=500 ratio=1.3 %}")
+        load_tag = "{% load conditional_resize from simple_resizer %}"
+        render_url = ("{% conditional_resize image=image width=300 "
+                      "height=300 ratio=1.3 %}")
         self.template = Template("".join((load_tag, render_url)))
         self.assets_folder = os.path.join(get_test_directory(), "assets")
         self.image_path_1 = os.path.join(self.assets_folder, "image-1.jpg")
@@ -128,7 +128,8 @@ class ConditionalResizeTemplateTagTest(ResizerTestCase):
 
         image = ImageFile(default_storage.open(rendered))
 
-        self.assertEqual(image.width, 500)
+        self.assertEqual(image.height, 300)
+        self.assertLess(image.width, 300)
 
         image.close()
 
@@ -136,8 +137,7 @@ class ConditionalResizeTemplateTagTest(ResizerTestCase):
 
         image = ImageFile(default_storage.open(rendered))
 
-        self.assertEqual(image.height, 500)
-        self.assertLess(image.width, 500)
+        self.assertEqual(image.width, 300)
 
         image.close()
 

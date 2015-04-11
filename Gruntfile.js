@@ -25,7 +25,7 @@ module.exports = function( grunt ) {
                 failOnError: true
             },
             pep8_package: {
-                command: "pep8 resizer"
+                command: "pep8 simple_resizer"
             },
 
             testrunner: {
