@@ -6,3 +6,8 @@
 
 # Exclude virtualenv
 /venv/
+
+# Exclude distutils things
+/MANIFEST
+/dist/
+/*.egg-info/
