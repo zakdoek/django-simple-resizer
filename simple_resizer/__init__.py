@@ -200,3 +200,8 @@ def resized(*args, **kwargs):
     finally:
         if resized_image is not None:
             resized_image.close()
+
+
+from ._version import get_versions
+__version__ = get_versions()['version']
+del get_versions
