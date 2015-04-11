@@ -1,0 +1,4 @@
+include README.md
+recursive-include resizer/templatetags *
+recursive-include resizer/tests *
+recursive-include resizer/utils *

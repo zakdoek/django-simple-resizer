@@ -1,0 +1,8 @@
+# Exclude python binaries
+*.pyc
+
+# Exclude nodejs
+/node_modules/
+
+# Exclude virtualenv
+/venv/
