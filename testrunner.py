@@ -13,8 +13,8 @@ settings.configure(
     },
     ROOT_URLCONF="resizer.urls",
     INSTALLED_APPS=(
-        "resizer",
-        "resizer.tests",
+        "simple_resizer",
+        "simple_resizer.tests",
     ))
 
 from django.test.runner import DiscoverRunner
@@ -22,6 +22,6 @@ from django.test.runner import DiscoverRunner
 test_runner = DiscoverRunner(pattern="*.py",
                              interactive=False)
 
-failures = test_runner.run_tests(["resizer",])
+failures = test_runner.run_tests(["simple_resizer"])
 if failures:
     sys.exit(failures)
