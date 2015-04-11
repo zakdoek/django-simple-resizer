@@ -39,7 +39,7 @@ class ResizeTemplateTag(ResizerTestCase):
         self.assets_folder = os.path.join(get_test_directory(), "assets")
         self.image_path = os.path.join(self.assets_folder, "image-1.jpg")
 
-        with open(self.image_path, "r") as image_file:
+        with open(self.image_path, "rb") as image_file:
             self.image_1 = ImageFile(image_file)
 
         self.image_1.open()
@@ -95,10 +95,10 @@ class ConditionalResizeTemplateTagTest(ResizerTestCase):
         self.image_path_1 = os.path.join(self.assets_folder, "image-1.jpg")
         self.image_path_2 = os.path.join(self.assets_folder, "image-2.png")
 
-        with open(self.image_path_1, "r") as image_file:
+        with open(self.image_path_1, "rb") as image_file:
             self.image_1 = ImageFile(image_file)
 
-        with open(self.image_path_2, "r") as image_file:
+        with open(self.image_path_2, "rb") as image_file:
             self.image_2 = ImageFile(image_file)
 
         self.image_1.open()

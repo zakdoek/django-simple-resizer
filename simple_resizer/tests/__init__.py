@@ -43,7 +43,7 @@ class ResizeTest(ResizerTestCase):
         Setup the test resources
         """
         for idx, image_path in enumerate(self.image_paths):
-            with open(image_path, "r") as image_file:
+            with open(image_path, "rb") as image_file:
                 setattr(self, "image_%i" % (idx + 1), ImageFile(image_file))
 
     def tearDown(self):
