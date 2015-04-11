@@ -1,11 +1,12 @@
 import os
 import versioneer
 from setuptools import setup
+from setuptools import find_packages
 
 versioneer.versionfile_source = "simple_resizer/_version.py"
 versioneer.VCS = "git"
 versioneer.tag_prefix = ""
-versioneer.parentdir_prefix = "simple-resizer"
+versioneer.parentdir_prefix = "django-simple-resizer-"
 
 README = open(os.path.join(os.path.dirname(__file__), "README.md")).read()
 
@@ -16,7 +17,7 @@ setup(
     name="django-simple-resizer",
     version=versioneer.get_version(),
     cmdclass=versioneer.get_cmdclass(),
-    packages=["simple_resizer"],
+    packages=find_packages(),
     include_package_data=True,
     license="MIT",
     description="A simple image resizer",
