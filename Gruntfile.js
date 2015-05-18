@@ -10,11 +10,15 @@ module.exports = function( grunt ) {
         // Lint the files
         pylint: {
             options: {
-                rcfile: ".pylintrc"
+                rcfile: ".pylintrc",
+                virtualenv: "venv",
+                externalPylint: true
             },
 
             src_package: {
-                src: "resizer"
+                src: [
+                    "simple_resizer"
+                ]
             }
         },
 
@@ -25,7 +29,7 @@ module.exports = function( grunt ) {
                 failOnError: true
             },
             pep8_package: {
-                command: "pep8 simple_resizer"
+                command: "pep8 simple_resizer --exclude=_version.py"
             },
 
             testrunner: {

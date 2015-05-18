@@ -204,6 +204,6 @@ def resized(*args, **kwargs):
             resized_image.close()
 
 
-from ._version import get_versions
+from ._version import get_versions  # noqa
 __version__ = get_versions()['version']
 del get_versions
