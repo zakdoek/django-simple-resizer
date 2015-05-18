@@ -125,6 +125,8 @@ def _resize(image, width, height, crop):
         # Save to temporary file
         temp_file = tempfile.TemporaryFile()
         b_image.save(file=temp_file)
+        # Rewind the file
+        temp_file.seek(0)
         return temp_file
 
 
