@@ -36,7 +36,7 @@ setup(
         "Topic :: Utilities",
     ],
     install_requires=[
-        "Wand==0.4.0",
+        "Wand==0.4.1",
         "Pillow==2.8.1",
     ],
 )
