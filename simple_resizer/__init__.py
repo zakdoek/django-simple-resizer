@@ -114,6 +114,9 @@ def _resize(image, width, height, crop):
         # strip color profiles
         b_image.strip()
 
+        # Convert EXIF data
+        b_image.auto_orient()
+
         # Resize
         b_image.resize(target_width, target_height)
 
