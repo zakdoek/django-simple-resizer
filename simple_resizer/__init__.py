@@ -6,6 +6,7 @@ Future modifications to make:
     - Add animated gif support through gifsicle
     - Do test with wand.Image.transform if more correct (current implementation
       is very brute).
+    - Add test with exif data
 """
 
 import os
@@ -14,6 +15,7 @@ import tempfile
 
 from contextlib import contextmanager
 
+from wand.image import ORIENTATION_TYPES
 from wand.image import Image
 
 from django.core.files.storage import default_storage
@@ -62,6 +64,18 @@ def _resize(image, width, height, crop):
     ext = os.path.splitext(image.name)[1].strip(".")
 
     with Image(file=image, format=ext) as b_image:
+        # Account for orientation
+        if ORIENTATION_TYPES.index(b_image.orientation) > 4:
+            # Flip
+            target_aspect = float(width) / float(height)
+            aspect = float(b_image.height) / float(b_image.width)
+        else:
+            target_aspect = float(width) / float(height)
+            aspect = float(b_image.width) / float(b_image.height)
+
+        # Fix rotation
+        b_image.auto_orient()
+
         # Calculate target size
         target_aspect = float(width) / float(height)
         aspect = float(b_image.width) / float(b_image.height)
@@ -113,9 +127,6 @@ def _resize(image, width, height, crop):
 
         # strip color profiles
         b_image.strip()
-
-        # Convert EXIF data
-        b_image.auto_orient()
 
         # Resize
         b_image.resize(target_width, target_height)
