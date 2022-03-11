@@ -37,6 +37,6 @@ setup(
     ],
     install_requires=[
         "Wand==0.4.1",
-        "Pillow==2.8.1",
+        "Pillow==9.0.1",
     ],
 )
