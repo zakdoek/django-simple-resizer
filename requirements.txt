@@ -6,4 +6,4 @@ Pillow==2.8.1
 pylint==1.4.3
 six==1.9.0
 Wand==0.4.1
-wheel==0.24.0
+wheel==0.38.1
